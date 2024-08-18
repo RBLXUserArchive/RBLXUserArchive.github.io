@@ -1,0 +1,8 @@
+<label id="tradeID">Trade ID</label><input id="tradeid"><button id="create">CreateShortURL</button>
+<br><p id="TradeLink">Trade URL: </p>
+<script>
+  let btn = document.getElementById("create");
+  btn.onclick = () => {
+    document.getElementById("TradeLink").innerHTML = "Trade URL: https://RBLXUserArchive.github.io/user/user.html?userId="+document.getElementById("tradeid").value
+  }
+</script>
