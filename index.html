@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBLXUserArchive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .hero {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            margin: 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .search {
+            padding: 20px;
+            text-align: center;
+        }
+        .search input {
+            padding: 10px;
+            width: 60%;
+            margin-right: 10px;
+        }
+        .search button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .archive-results {
+            padding: 20px;
+        }
+        .result {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>RBLXUserArchive</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#archive">Archive</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#legal">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="home" class="hero">
+            <h2>Welcome to RBLXUserArchive</h2>
+            <p>Explore and archive Roblox user information with ease.</p>
+            <a href="#archive" class="btn">Explore Archives</a>
+        </section>
+        
+        <section id="archive" class="search">
+            <div class="container">
+                <h2>Search Archives</h2>
+                <input type="text" id="searchBar" placeholder="Search for a user...">
+                <button id="searchBtn">Search</button>
+            </div>
+        </section>
+        
+        <section class="archive-results">
+            <div class="container">
+                <h2>Results</h2>
+                <!-- Results will be populated here -->
+            </div>
+        </section>
+        
+        <section id="contact" class="search">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Email: <a href="mailto:support@rblxuserarchive.com">support@rblxuserarchive.com</a></p>
+            </div>
+        </section>
+        
+        <section id="legal" class="search">
+            <div class="container">
+                <h2>Legal</h2>
+                <p>Privacy Policy and Terms of Service details go here.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 RBLXUserArchive. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBtn = document.getElementById('searchBtn');
+            const searchBar = document.getElementById('searchBar');
+            const resultsContainer = document.querySelector('.archive-results .container');
+            
+            // Sample data for demonstration
+            const users = [
+                { username: 'User1', info: 'User1 details and history.' },
+                { username: 'User2', info: 'User2 details and history.' },
+                { username: 'User3', info: 'User3 details and history.' },
+                // Add more sample users as needed
+            ];
+
+            // Function to display search results
+            function displayResults(results) {
+                resultsContainer.innerHTML = ''; // Clear previous results
+                if (results.length > 0) {
+                    results.forEach(user => {
+                        const userDiv = document.createElement('div');
+                        userDiv.classList.add('result');
+                        userDiv.innerHTML = `<h3>${user.username}</h3><p>${user.info}</p>`;
+                        resultsContainer.appendChild(userDiv);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<p>No results found</p>';
+                }
+            }
+
+            // Event listener for the search button
+            searchBtn.addEventListener('click', () => {
+                const query = searchBar.value.toLowerCase();
+                const results = users.filter(user => user.username.toLowerCase().includes(query));
+                displayResults(results);
+            });
+        });
+    </script>
+</body>
+</html>
